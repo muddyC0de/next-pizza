@@ -5,7 +5,7 @@ import { Title } from "./title";
 import { RangeSlider } from "./range-slider";
 import { CheckboxFiltersGroup } from "./checkbox-filters-group";
 import { Api } from "@/shared/services/api-client";
-import { useSet } from "react-use";
+import { useMap, useSet } from "react-use";
 import qs from "qs";
 import { Input } from "../ui";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -25,7 +25,7 @@ export type IngredientItem = {
 
 export const Filters: React.FC<Props> = ({ className }) => {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const isMounted = React.useRef(false);
   const [ingredients, setIngredients] = React.useState<IngredientItem[]>([]);
   const [selectedIngredients, { toggle: toggleIngredient }] = useSet<string>(
     new Set<string>([])
@@ -54,16 +54,19 @@ export const Filters: React.FC<Props> = ({ className }) => {
   }, []);
 
   React.useEffect(() => {
-    const filters = {
-      ...price,
-      sizes: Array.from(selectedSizes),
-      ingredients: Array.from(selectedIngredients),
-      pizzaTypes: Array.from(selectedPizzaTypes),
-    };
+    if (isMounted.current) {
+      const filters = {
+        ...price,
+        sizes: Array.from(selectedSizes),
+        ingredients: Array.from(selectedIngredients),
+        pizzaTypes: Array.from(selectedPizzaTypes),
+      };
 
-    const query = qs.stringify(filters, { arrayFormat: "comma" });
-    router.push(`?${query}`, { scroll: false });
-  }, [selectedSizes, selectedIngredients, selectedPizzaTypes, price, router]);
+      const query = qs.stringify(filters, { arrayFormat: "comma" });
+      router.push(`?${query}`, { scroll: false });
+    }
+    isMounted.current = true;
+  }, [selectedSizes, selectedIngredients, selectedPizzaTypes, price]);
   return (
     <div className={className}>
       {/* Верхні чекбокси */}

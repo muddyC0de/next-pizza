@@ -128,8 +128,8 @@ model Order {
 
     items Json
 
-    fullname String
-    adress String
+    fullName String
+    address String
     email String
     phone String
     comment String?

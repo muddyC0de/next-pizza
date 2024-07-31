@@ -15,7 +15,7 @@ export const CartButton = () => {
         variant="default"
         className={cn("group relative", { "w-[105px]": loading })}
       >
-        <b>{totalAmount} ₴</b>
+        <b>{totalAmount || 0} ₴</b>
         <span className="h-full w-[1px] bg-white/30 mx-3"></span>
         <div className="flex items-center gap-1 transition duration-300 group-hover:opacity-0">
           <ShoppingCart

@@ -7,7 +7,6 @@ export const getCartItemInfo = (
 ) => {
   if (pizzaType && pizzaSize) {
     const typeName = mapPizzaTypes[pizzaType];
-    console.log(typeName);
     return `${typeName} тісто, ${pizzaSize} см`;
   }
 

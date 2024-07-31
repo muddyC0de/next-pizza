@@ -62,7 +62,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
             !totalAmount && "justify-center"
           )}
         >
-          {items.length > 0 && (
+          {totalAmount > 0 && (
             <SheetHeader>
               <SheetTitle>
                 В корзині{" "}
@@ -71,7 +71,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
             </SheetHeader>
           )}
 
-          {totalAmount === 0 && (
+          {totalAmount === 0 || !totalAmount ? (
             <div className="flex flex-col items-center justify-center w-72 mx-auto">
               <Image
                 src="/empty-box.png"
@@ -95,9 +95,9 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
                 </Button>
               </SheetClose>
             </div>
-          )}
+          ) : null}
 
-          {items.length > 0 && (
+          {totalAmount > 0 && (
             <>
               <div className="-mx-3 mt-5 overflow-auto flex-1 ">
                 <div className="mb-2 flex flex-col gap-5">
