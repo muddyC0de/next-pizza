@@ -37,8 +37,8 @@ export const AuthModal: React.FC<Props> = ({
       callbackUrl,
       redirect,
     });
-    toast.success("Успішний вхід в аккаунт!");
     setIsLoading(false);
+    toast.success("Успішний вхід в аккаунт!");
   };
 
   return (
