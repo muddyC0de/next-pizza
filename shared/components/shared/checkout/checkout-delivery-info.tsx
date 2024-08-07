@@ -1,5 +1,6 @@
-import { Input } from "../../ui";
-import { FormInput, FormTextarea } from "../form-components";
+"use client";
+
+import { FormTextarea } from "../form-components";
 import AutoComplete from "react-google-autocomplete";
 import { WhiteBlock } from "../white-block";
 import { Controller, useFormContext } from "react-hook-form";
