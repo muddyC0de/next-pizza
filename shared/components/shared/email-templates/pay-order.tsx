@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Button } from "../../ui";
 
 interface PayOrderTemplateProps {
   orderId: number;
@@ -11,12 +10,13 @@ export const PayOrderTemplate: React.FC<PayOrderTemplateProps> = ({
   orderId,
   totalAmount,
   paymentUrl,
-}) => (
+}) =>
+  `
   <div>
-    <h1>Замовлення #{orderId} </h1>
+    <h1>Замовлення #${orderId}</h1>
     <p>
-      Оплатіть замовлення на сумму <b>{totalAmount} ₴</b>. Щоб оплатити
-      замовлення <a href={paymentUrl}>перейдіть по посиланню</a>
+      Оплатіть замовлення на сумму <b>${totalAmount} ₴</b>. Щоб оплатити
+      замовлення <a href="${paymentUrl}">перейдіть по посиланню</a>
     </p>
   </div>
-);
+`;

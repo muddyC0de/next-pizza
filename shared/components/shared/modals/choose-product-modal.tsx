@@ -68,6 +68,7 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
         ) : (
           <ChooseProductForm
             onSumbit={onSumbit}
+            description={product.description || ""}
             imageUrl={product.imageUrl}
             isLoading={loading}
             name={product.name}

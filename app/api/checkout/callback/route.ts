@@ -1,6 +1,6 @@
 import { prisma } from "@/prisma/prisma-client";
 import { OrderSuccesTemplate } from "@/shared/components/shared/email-templates/order-succes";
-import { sendEmail } from "@/shared/lib";
+import { sendEmail } from "@/shared/lib/sendEmail";
 import { CartItemDTO } from "@/shared/services/dto/cart";
 import { OrderStatus } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
@@ -9,7 +9,6 @@ export async function POST(req: NextRequest) {
   try {
     const { data } = await req.json();
     const object = data.object;
-    console.log(object);
     const order = await prisma.order.findFirst({
       where: {
         id: Number(object.metadata.orderId),

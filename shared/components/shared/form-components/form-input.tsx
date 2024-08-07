@@ -7,6 +7,7 @@ import { RequiredSymbol } from "../required-symbol";
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label?: string;
+  isClearable?: boolean;
   required?: boolean;
   className?: string;
 }
@@ -16,6 +17,7 @@ export const FormInput: React.FC<Props> = ({
   label,
   required,
   className,
+  isClearable = true,
   ...props
 }) => {
   const {
@@ -44,7 +46,7 @@ export const FormInput: React.FC<Props> = ({
           {...register(name)}
           {...props}
         />
-        {value && <ClearButton onClick={onClickClear} />}
+        {value && isClearable && <ClearButton onClick={onClickClear} />}
       </div>
 
       {errorText && <ErrorText text={errorText} className="mt-2" />}

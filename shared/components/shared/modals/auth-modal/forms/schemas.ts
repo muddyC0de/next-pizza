@@ -23,6 +23,5 @@ export const formRegisterSchema = formLoginSchema
     message: "Паролі не співпадають",
     path: ["confirmPassword"],
   });
-
 export type TFormLoginValues = z.infer<typeof formLoginSchema>;
 export type TFormRegisterValues = z.infer<typeof formRegisterSchema>;

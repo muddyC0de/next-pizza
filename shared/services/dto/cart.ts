@@ -14,5 +14,6 @@ export interface CreateCartItemValues {
   pizzaSize?: number;
   type?: number;
   ingredientsIds?: number[];
+  description?: string;
   quantity: number;
 }

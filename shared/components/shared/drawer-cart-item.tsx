@@ -2,17 +2,15 @@
 
 import { cn } from "@/shared/lib/utils";
 import { Title } from "./title";
-import { Ingredient } from "@prisma/client";
-import { PizzaSize, PizzaType } from "@/shared/constanst/pizza";
 import { CountButton } from "./count-button";
 import { Trash2Icon } from "lucide-react";
-import { useCartStore } from "@/shared/store/cart";
 import React from "react";
 
 interface Props {
   id: number;
   name: string;
   imageUrl: string;
+  description?: string;
   price: number;
   info: string;
   quantity: number;
@@ -32,6 +30,7 @@ export const DrawerCartItem: React.FC<Props> = ({
   imageUrl,
   price,
   details,
+  description,
   quantity,
   info,
   onClickCountButton,
@@ -60,6 +59,7 @@ export const DrawerCartItem: React.FC<Props> = ({
         <p className="text-gray-400 text-sm">{info}</p>
         <p className="text-gray-400 text-[12px] break-all">
           {details && `+ ${details.toLowerCase()}`}
+          {description || ""}
         </p>
 
         <div className="w-full h-[1px] bg-gray-200 my-4"></div>

@@ -6,7 +6,6 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest) {
   try {
     const token = req.cookies.get("cartToken")?.value;
-    console.log("token");
     if (!token) {
       return NextResponse.json({ items: [] });
     }

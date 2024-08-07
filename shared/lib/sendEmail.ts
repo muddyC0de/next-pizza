@@ -1,23 +1,33 @@
-import { Resend } from "resend";
-import React from "react";
-
-const resend = new Resend("re_bjGgTKfG_5FsVtm5Bw5mToBuyBa4qYPPr");
+import nodemailer from "nodemailer";
 
 export const sendEmail = async (
   to: string,
   subject: string,
-  template: React.ReactNode
+  template: string
 ) => {
-  const { data, error } = await resend.emails.send({
-    from: "onboarding@resend.dev",
-    to,
-    subject,
-    react: template,
+  const transport = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "next.pizza.dev@gmail.com",
+      pass: "vwuy fraq kqrx zbtq",
+    },
   });
 
-  if (error) {
-    throw error;
+  try {
+    const result = await transport.verify();
+    console.log(result);
+  } catch (error) {
+    console.log(error);
   }
 
-  return data;
+  try {
+    const sendResult = await transport.sendMail({
+      from: "next.pizza.dev@gmail.com",
+      to,
+      subject,
+      html: template,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };

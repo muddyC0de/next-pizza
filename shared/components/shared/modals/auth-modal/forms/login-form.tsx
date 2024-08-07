@@ -9,11 +9,16 @@ import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
 
 interface Props {
+  isLoading: boolean;
   onClose: () => void;
   className?: string;
 }
 
-export const LoginForm: React.FC<Props> = ({ onClose, className }) => {
+export const LoginForm: React.FC<Props> = ({
+  isLoading,
+  onClose,
+  className,
+}) => {
   const form = useForm<TFormLoginValues>({
     resolver: zodResolver(formLoginSchema),
     defaultValues: {
@@ -28,15 +33,15 @@ export const LoginForm: React.FC<Props> = ({ onClose, className }) => {
         ...data,
         redirect: false,
       });
-
       if (!resp?.ok) {
-        throw new Error("Error [LOGIN]");
+        throw new Error(resp?.error || "Error [LOGIN]");
       }
+
       toast.success("Успішний вхід в аккаунт");
       onClose();
     } catch (error) {
       console.log("Error [LOGIN]", error);
-      toast.error("Не вдалося увійти в аккаунт");
+      toast.error("Не вдалося ввійти в аккаунт");
     }
   };
 
@@ -57,10 +62,10 @@ export const LoginForm: React.FC<Props> = ({ onClose, className }) => {
         </div>
 
         <FormInput name="email" label="E-Mail" required />
-        <FormInput name="password" label="Пароль" type="password" />
+        <FormInput name="password" label="Пароль" type="password" required />
 
         <Button
-          loading={form.formState.isSubmitting}
+          loading={form.formState.isSubmitting || isLoading}
           className="h-12 text-base"
           type="submit"
         >

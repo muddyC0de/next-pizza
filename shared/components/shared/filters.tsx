@@ -9,6 +9,7 @@ import { useMap, useSet } from "react-use";
 import qs from "qs";
 import { Input } from "../ui";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useQueryStore } from "@/shared/store/query";
 interface Props {
   className?: string;
 }
@@ -26,15 +27,18 @@ export type IngredientItem = {
 export const Filters: React.FC<Props> = ({ className }) => {
   const router = useRouter();
   const isMounted = React.useRef(false);
+  const {
+    selectedIngredients,
+    selectedPizzaTypes,
+    selectedSizes,
+    toggleIngredient,
+    togglePizzaTypes,
+    toggleSize,
+    sortBy,
+  } = useQueryStore((state) => state);
   const [ingredients, setIngredients] = React.useState<IngredientItem[]>([]);
-  const [selectedIngredients, { toggle: toggleIngredient }] = useSet<string>(
-    new Set<string>([])
-  );
-  const [selectedPizzaTypes, { toggle: toggleSelectedPizzaTypes }] =
-    useSet<string>(new Set<string>([]));
 
   const [price, setPrice] = React.useState<PriceProps>({});
-  const [selectedSizes, { toggle: toggleSize }] = useSet(new Set<string>([]));
   const [loading, setLoading] = React.useState(true);
 
   const updatePrice = (from: number, to: number) => {
@@ -60,13 +64,14 @@ export const Filters: React.FC<Props> = ({ className }) => {
         sizes: Array.from(selectedSizes),
         ingredients: Array.from(selectedIngredients),
         pizzaTypes: Array.from(selectedPizzaTypes),
+        sortBy,
       };
 
       const query = qs.stringify(filters, { arrayFormat: "comma" });
       router.push(`?${query}`, { scroll: false });
     }
     isMounted.current = true;
-  }, [selectedSizes, selectedIngredients, selectedPizzaTypes, price]);
+  }, [selectedSizes, selectedIngredients, selectedPizzaTypes, price, sortBy]);
   return (
     <div className={className}>
       {/* Верхні чекбокси */}
@@ -77,7 +82,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
         className="mb-5"
         selectedValues={selectedPizzaTypes}
         title="Тип тіста"
-        onClickCheckbox={(value: string) => toggleSelectedPizzaTypes(value)}
+        onClickCheckbox={(value: string) => togglePizzaTypes(value)}
         items={[
           { text: "Тонке", value: "1" },
           { text: "Традиційне", value: "2" },
@@ -91,7 +96,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
         title="Розміри"
         onClickCheckbox={(value: string) => toggleSize(value)}
         items={[
-          { text: "Маленька", value: "20" },
+          { text: "Маленька", value: "25" },
           { text: "Середня", value: "30" },
           { text: "Велика", value: "40" },
         ]}
@@ -108,12 +113,14 @@ export const Filters: React.FC<Props> = ({ className }) => {
             min={price.priceFrom || 0}
             max={price.priceTo || 1000}
             defaultValue={price.priceFrom}
+            className="rounded-lg"
             onChange={(e) =>
               updatePrice(Number(e.target.value), price.priceTo || 1000)
             }
           />
           <Input
             type="number"
+            className="rounded-lg"
             placeholder={String(price.priceTo || 1000)}
             min={price.priceFrom || 0}
             max={price.priceTo || 1000}

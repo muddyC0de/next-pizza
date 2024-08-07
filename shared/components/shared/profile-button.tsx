@@ -14,17 +14,17 @@ export const ProfileButton: React.FC<Props> = ({
   className,
 }) => {
   const { data: session } = useSession();
-  console.log(session);
   return (
     <div className={className}>
       {!session ? (
         <Button
+          loading={session === undefined}
           onClick={onClickSignIn}
-          variant="outline"
-          className="flex items-center gap-1"
+          variant={session === undefined ? "default" : "outline"}
+          className="flex items-center gap-1 w-[95px]"
         >
           <User size={16} />
-          Войти
+          Увійти
         </Button>
       ) : (
         <Link href="/profile">

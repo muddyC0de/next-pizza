@@ -3,231 +3,196 @@ import { hashSync } from "bcrypt";
 
 const ingredients = [
   {
-    name: "Сырный бортик",
+    name: "Сирний бортик",
     price: 179,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/99f5cb91225b4875bd06a26d2e842106.png",
+    imageUrl: "/ingredients/1.png",
   },
   {
-    name: "Сливочная моцарелла",
+    name: "Сливочна моцарела",
     price: 79,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/cdea869ef287426386ed634e6099a5ba.png",
+    imageUrl: "/ingredients/2.png",
   },
   {
-    name: "Сыры чеддер и пармезан",
+    name: "Сири чеддер і пармезан",
     price: 79,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA69C1FE796",
+    imageUrl: "/ingredients/16.png",
   },
   {
-    name: "Острый перец халапеньо",
+    name: "Гострий перець халапеньо",
     price: 59,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/11ee95b6bfdf98fb88a113db92d7b3df.png",
+    imageUrl: "/ingredients/3.png",
   },
   {
-    name: "Нежный цыпленок",
+    name: "Ніжне курча",
     price: 79,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA5B328D35A",
+    imageUrl: "/ingredients/14.png",
   },
   {
-    name: "Шампиньоны",
+    name: "Шампіньйони",
     price: 59,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA67259A324",
+    imageUrl: "/ingredients/4.png",
   },
   {
-    name: "Ветчина",
+    name: "Шинка",
     price: 79,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA61B9A8D61",
+    imageUrl: "/ingredients/13.png",
   },
   {
-    name: "Пикантная пепперони",
+    name: "Пікантна пеппероні",
     price: 79,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA6258199C3",
+    imageUrl: "/ingredients/12.png",
   },
   {
-    name: "Острая чоризо",
+    name: "Гостра чорізо",
     price: 79,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA62D5D6027",
+    imageUrl: "/ingredients/8.png",
   },
   {
-    name: "Маринованные огурчики",
+    name: "Мариновані огірки",
     price: 59,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/000D3A21DA51A81211E9EA89958D782B",
+    imageUrl: "/ingredients/17.png",
   },
   {
-    name: "Свежие томаты",
+    name: "Свіжі помідори",
     price: 59,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA7AC1A1D67",
+    imageUrl: "/ingredients/18.png",
   },
   {
-    name: "Красный лук",
+    name: "Червона цибуля",
     price: 59,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA60AE6464C",
+    imageUrl: "/ingredients/19.png",
   },
   {
-    name: "Сочные ананасы",
+    name: "Соковиті ананаси",
     price: 59,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/000D3A21DA51A81211E9AFA6795BA2A0",
+    imageUrl: "/ingredients/20.png",
   },
   {
-    name: "Итальянские травы",
+    name: "Італійські трави",
     price: 39,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/370dac9ed21e4bffaf9bc2618d258734.png",
+    imageUrl: "/ingredients/21.png",
   },
   {
-    name: "Сладкий перец",
+    name: "Солодкий перець",
     price: 59,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA63F774C1B",
+    imageUrl: "/ingredients/22.png",
   },
   {
-    name: "Кубики брынзы",
+    name: "Кубики бринзи",
     price: 79,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA6B0FFC349",
+    imageUrl: "/ingredients/23.png",
   },
   {
-    name: "Митболы",
+    name: "Мітболи",
     price: 79,
-    imageUrl:
-      "https://cdn.dodostatic.net/static/Img/Ingredients/b2f3a5d5afe44516a93cfc0d2ee60088.png",
+    imageUrl: "/ingredients/24.png",
   },
 ].map((obj, index) => ({ id: index + 1, ...obj }));
 
 const products = [
   {
-    name: "Омлет с ветчиной и грибами",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7970321044479C1D1085457A36EB.webp",
+    name: "Омлет з ветчиною та грибами",
+    description:
+      "Гарячий ситний омлет з піджаристою скоринкою, ветчина, шампіньйони та моцарела",
+    imageUrl: "/products/omlet-with-ham-and-mashroom.png",
+    categoryId: 2,
+    price: 99,
+  },
+  {
+    name: "Омлет з беконом",
+    description:
+      "Ситний і збалансований сніданок — омлет з піджаристою скоринкою, пікантна пеппероні, помідори та моцарела",
+    imageUrl: "/products/omlet-with-beacon.png",
+    categoryId: 2,
+    price: 99,
+  },
+  {
+    name: "Сирники зі згущеним молоком",
+    description:
+      "Ніжні сирники, приготовані в печі, з порційним згущеним молоком",
+    imageUrl: "/products/cheesecakes.png",
+    categoryId: 2,
+    price: 100,
+  },
+  {
+    name: "Кава Латте",
+    description:
+      "Коли хочеться ніжної молочної піни, на допомогу приходить класичне латте",
+    imageUrl: "/products/coffe-latte.png",
     categoryId: 2,
     price: 40,
   },
   {
-    name: "Омлет с пепперони",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE94ECF33B0C46BA410DEC1B1DD6F8.webp",
+    name: "Кава Капучино",
+    description:
+      "Король серед кавових напоїв — класичне капучино. Для любителів збалансованого кавово-молочного смаку",
+    imageUrl: "/products/coffe-cappuccino.png",
     categoryId: 2,
     price: 40,
   },
   {
-    name: "Кофе Латте",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7D61B0C26A3F85D97A78FEEE00AD.webp",
+    name: "Кава Американо",
+    description:
+      "Пара ковтків гарячого Американо, і ви будете готові покоряти цей день",
+    imageUrl: "/products/coffe-americano.png",
     categoryId: 2,
     price: 40,
   },
   {
-    name: "Дэнвич ветчина и сыр",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE796FF0059B799A17F57A9E64C725.webp",
+    name: "Курячі нагетси",
+    description: "Ніжне куряче м'ясо в хрусткій паніровці",
+    imageUrl: "/products/chicken-nuggets.png",
     categoryId: 3,
-    price: 40,
+    price: 139,
   },
   {
-    name: "Куриные наггетсы",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7D618B5C7EC29350069AE9532C6E.webp",
+    name: "Картопля з печі з соусом 🌱",
+    description:
+      "Запечена в печі картопля з пряними спеціями. В комплекті сирний соус",
+    imageUrl: "/products/kartofel-s-sousom.png",
     categoryId: 3,
-    price: 40,
+    price: 169,
   },
   {
-    name: "Картофель из печи с соусом 🌱",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EED646A9CD324C962C6BEA78124F19.webp",
+    name: "Картопля з печі 🌱👶",
+    description:
+      "Запечена в печі картопля — звичний смак і мало масла. В складі пряні спеції",
+    imageUrl: "/products/kartofel.png",
     categoryId: 3,
-    price: 40,
+    price: 139,
   },
   {
-    name: "Додстер",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE796F96D11392A2F6DD73599921B9.webp",
+    name: "Курячі крильця барбекю",
+    description: "Курячі крильця зі спеціями та ароматом копчення",
+    imageUrl: "/products/chiken-bbq.png",
     categoryId: 3,
-    price: 40,
+    price: 210,
   },
   {
-    name: "Острый Додстер 🌶️🌶️",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE796FD3B594068F7A752DF8161D04.webp",
-    categoryId: 3,
-    price: 40,
-  },
-  {
-    name: "Банановый молочный коктейль",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EEE20B8772A72A9B60CFB20012C185.webp",
+    name: "Кока-Кола",
+    imageUrl: "/products/coca-cola.png",
     categoryId: 4,
-    price: 40,
+    price: 49,
   },
   {
-    name: "Карамельное яблоко молочный коктейль",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE79702E2A22E693D96133906FB1B8.webp",
+    name: "Спрайт",
+    imageUrl: "/products/sprite.png",
     categoryId: 4,
-    price: 40,
+    price: 49,
   },
   {
-    name: "Молочный коктейль с печеньем Орео",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE796FA1F50F8F8111A399E4C1A1E3.webp",
+    name: "Фанта",
+    imageUrl: "/products/fanta.png",
     categoryId: 4,
-    price: 40,
+    price: 49,
   },
   {
-    name: "Классический молочный коктейль 👶",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE796F93FB126693F96CB1D3E403FB.webp",
+    name: "Живчик",
+    imageUrl: "/products/zivchik.png",
     categoryId: 4,
-    price: 40,
-  },
-  {
-    name: "Ирландский Капучино",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7D61999EBDA59C10E216430A6093.webp",
-    categoryId: 5,
-    price: 40,
-  },
-  {
-    name: "Кофе Карамельный капучино",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7D61AED6B6D4BFDAD4E58D76CF56.webp",
-    categoryId: 5,
-    price: 40,
-  },
-  {
-    name: "Кофе Кокосовый латте",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7D61B19FA07090EE88B0ED347F42.webp",
-    categoryId: 5,
-    price: 40,
-  },
-  {
-    name: "Кофе Американо",
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7D61B044583596548A59078BBD33.webp",
-    categoryId: 5,
-    price: 40,
-  },
-  {
-    name: "Кофе Латте",
-    price: 40,
-    imageUrl:
-      "https://media.dodostatic.net/image/r:292x292/11EE7D61B0C26A3F85D97A78FEEE00AD.webp",
-    categoryId: 5,
+    price: 49,
   },
 ];
-
 async function up() {
   await prisma.user.createMany({
     data: [
@@ -253,7 +218,6 @@ async function up() {
       { name: "Піцци" },
       { name: "Сніданок" },
       { name: "Закуски" },
-      { name: "Коктейлі" },
       { name: "Напої" },
     ],
   });
@@ -268,37 +232,109 @@ async function up() {
 
   const pizza1 = await prisma.product.create({
     data: {
-      name: "Пепперони фреш",
+      name: "Пепероні фреш",
       imageUrl: "/pizzas/pepperoni-fresh.png",
       categoryId: 1,
       ingredients: {
         connect: ingredients.slice(0, 5),
       },
-      price: Math.floor(Math.random() * (299 - 80 + 1) + 80),
+      price: 100,
     },
   });
 
   const pizza2 = await prisma.product.create({
     data: {
-      name: "Сырная",
+      name: "Сирна",
       imageUrl: "/pizzas/cheese.png",
       categoryId: 1,
       ingredients: {
-        connect: ingredients.slice(5, 10),
+        connect: ingredients.slice(5, 18),
       },
-      price: Math.floor(Math.random() * (299 - 80 + 1) + 80),
+      price: 100,
     },
   });
 
   const pizza3 = await prisma.product.create({
     data: {
-      name: "Чоризо фреш",
-      imageUrl: "/pizzas/chorizo-fresh.jpg",
+      name: "Чорізо фреш",
+      imageUrl: "/pizzas/chorizo-fresh.png",
       categoryId: 1,
       ingredients: {
-        connect: ingredients.slice(10, 40),
+        connect: ingredients.slice(0, 10),
       },
-      price: Math.floor(Math.random() * (299 - 80 + 1) + 80),
+      price: 100,
+    },
+  });
+
+  const pizza4 = await prisma.product.create({
+    data: {
+      name: "Двійне курча 👶",
+      imageUrl: "/pizzas/double-chiken.png",
+      categoryId: 1,
+      ingredients: {
+        connect: ingredients.slice(0, 10),
+      },
+      price: 100,
+    },
+  });
+
+  const pizza5 = await prisma.product.create({
+    data: {
+      name: "Шинка та сир",
+      imageUrl: "/pizzas/ham-and-cheese.png",
+      categoryId: 1,
+      ingredients: {
+        connect: ingredients.slice(5, 15),
+      },
+      price: 100,
+    },
+  });
+
+  const pizza6 = await prisma.product.create({
+    data: {
+      name: "Діабло 🌶️🌶️",
+      imageUrl: "/pizzas/diablo.png",
+      categoryId: 1,
+      ingredients: {
+        connect: ingredients.slice(7, 17),
+      },
+      price: 100,
+    },
+  });
+
+  const pizza7 = await prisma.product.create({
+    data: {
+      name: "Чотири сезони",
+      imageUrl: "/pizzas/four-seasons.png",
+      categoryId: 1,
+      ingredients: {
+        connect: ingredients.slice(0, 8),
+      },
+      price: 100,
+    },
+  });
+
+  const pizza8 = await prisma.product.create({
+    data: {
+      name: "Маргарита 🌱",
+      imageUrl: "/pizzas/margarita.png",
+      categoryId: 1,
+      ingredients: {
+        connect: ingredients.slice(0, 8),
+      },
+      price: 100,
+    },
+  });
+
+  const pizza9 = await prisma.product.create({
+    data: {
+      name: "Курча барбекю",
+      imageUrl: "/pizzas/chicken-bbq.png",
+      categoryId: 1,
+      ingredients: {
+        connect: ingredients.slice(10, 18),
+      },
+      price: 100,
     },
   });
 
@@ -309,21 +345,21 @@ async function up() {
         productId: pizza1.id,
         size: 25,
         pizzaType: 1,
-        price: 100,
+        price: 220,
       },
 
       {
         productId: pizza1.id,
         size: 30,
         pizzaType: 2,
-        price: 154,
+        price: 240,
       },
 
       {
         productId: pizza1.id,
         size: 40,
         pizzaType: 2,
-        price: 214,
+        price: 260,
       },
 
       // Cheese
@@ -338,33 +374,33 @@ async function up() {
         productId: pizza2.id,
         size: 30,
         pizzaType: 1,
-        price: 178,
+        price: 150,
       },
       {
         productId: pizza2.id,
         size: 40,
         pizzaType: 1,
-        price: 205,
+        price: 180,
       },
 
       {
         productId: pizza2.id,
         size: 25,
         pizzaType: 2,
-        price: 150,
+        price: 120,
       },
       {
         productId: pizza2.id,
         size: 30,
         pizzaType: 2,
-        price: 220,
+        price: 180,
       },
 
       {
         productId: pizza2.id,
         size: 40,
         pizzaType: 2,
-        price: 240,
+        price: 160,
       },
 
       // Chorizo
@@ -392,33 +428,221 @@ async function up() {
         productId: pizza3.id,
         size: 30,
         pizzaType: 2,
-        price: 75,
+        price: 280,
       },
 
       {
         productId: pizza3.id,
         size: 40,
         pizzaType: 2,
-        price: 75,
+        price: 300,
+      },
+
+      // Double chiken
+      {
+        productId: pizza4.id,
+        size: 30,
+        pizzaType: 1,
+        price: 220,
+      },
+      {
+        productId: pizza4.id,
+        size: 40,
+        pizzaType: 1,
+        price: 240,
+      },
+
+      {
+        productId: pizza4.id,
+        size: 25,
+        pizzaType: 2,
+        price: 250,
+      },
+      {
+        productId: pizza4.id,
+        size: 30,
+        pizzaType: 2,
+        price: 275,
+      },
+
+      {
+        productId: pizza4.id,
+        size: 40,
+        pizzaType: 2,
+        price: 280,
+      },
+
+      // Ham and cheese
+      {
+        productId: pizza5.id,
+        size: 30,
+        pizzaType: 1,
+        price: 300,
+      },
+      {
+        productId: pizza5.id,
+        size: 40,
+        pizzaType: 1,
+        price: 320,
+      },
+
+      {
+        productId: pizza6.id,
+        size: 25,
+        pizzaType: 1,
+        price: 150,
+      },
+      {
+        productId: pizza6.id,
+        size: 30,
+        pizzaType: 1,
+        price: 180,
+      },
+      {
+        productId: pizza6.id,
+        size: 40,
+        pizzaType: 1,
+        price: 210,
+      },
+      {
+        productId: pizza6.id,
+        size: 25,
+        pizzaType: 2,
+        price: 160,
+      },
+      {
+        productId: pizza6.id,
+        size: 30,
+        pizzaType: 2,
+        price: 190,
+      },
+      {
+        productId: pizza6.id,
+        size: 40,
+        pizzaType: 2,
+        price: 220,
+      },
+
+      // BBQ Chicken
+      {
+        productId: pizza7.id,
+        size: 30,
+        pizzaType: 1,
+        price: 250,
+      },
+      {
+        productId: pizza7.id,
+        size: 40,
+        pizzaType: 1,
+        price: 270,
+      },
+      {
+        productId: pizza7.id,
+        size: 25,
+        pizzaType: 2,
+        price: 270,
+      },
+      {
+        productId: pizza7.id,
+        size: 30,
+        pizzaType: 2,
+        price: 300,
+      },
+      {
+        productId: pizza7.id,
+        size: 40,
+        pizzaType: 2,
+        price: 330,
+      },
+
+      // Veggie Supreme
+      {
+        productId: pizza8.id,
+        size: 25,
+        pizzaType: 1,
+        price: 180,
+      },
+      {
+        productId: pizza8.id,
+        size: 30,
+        pizzaType: 1,
+        price: 210,
+      },
+      {
+        productId: pizza8.id,
+        size: 40,
+        pizzaType: 1,
+        price: 240,
+      },
+      {
+        productId: pizza8.id,
+        size: 25,
+        pizzaType: 2,
+        price: 190,
+      },
+      {
+        productId: pizza8.id,
+        size: 30,
+        pizzaType: 2,
+        price: 220,
+      },
+      {
+        productId: pizza8.id,
+        size: 40,
+        pizzaType: 2,
+        price: 250,
+      },
+
+      // Four Cheese
+      {
+        productId: pizza9.id,
+        size: 30,
+        pizzaType: 1,
+        price: 280,
+      },
+      {
+        productId: pizza9.id,
+        size: 40,
+        pizzaType: 1,
+        price: 310,
+      },
+      {
+        productId: pizza9.id,
+        size: 25,
+        pizzaType: 2,
+        price: 290,
+      },
+      {
+        productId: pizza9.id,
+        size: 30,
+        pizzaType: 2,
+        price: 320,
+      },
+      {
+        productId: pizza9.id,
+        size: 40,
+        pizzaType: 2,
+        price: 350,
       },
 
       // Інші продукти
 
-      { productId: 1, price: 40 },
-      { productId: 2, price: 40 },
-      { productId: 3, price: 40 },
+      // Сніданок
+      { productId: 1, price: 129 },
+      { productId: 2, price: 100 },
+      { productId: 3, price: 100 },
       { productId: 4, price: 40 },
       { productId: 5, price: 40 },
       { productId: 6, price: 40 },
-      { productId: 7, price: 40 },
-      { productId: 8, price: 40 },
-      { productId: 9, price: 40 },
-      { productId: 10, price: 40 },
-      { productId: 11, price: 40 },
-      { productId: 12, price: 40 },
-      { productId: 13, price: 40 },
-      { productId: 14, price: 40 },
-      { productId: 15, price: 40 },
+      { productId: 7, price: 210 },
+      { productId: 8, price: 169 },
+      { productId: 9, price: 139 },
+      { productId: 10, price: 169 },
+
+      { productId: 11, price: 49 },
+      { productId: 12, price: 49 },
+      { productId: 13, price: 49 },
+      { productId: 14, price: 49 },
     ],
   });
 }

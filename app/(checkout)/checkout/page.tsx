@@ -16,6 +16,8 @@ import {
 } from "@/shared/components/shared/checkout/schemas/checkout-form-schema";
 import { createOrder } from "@/app/actions";
 import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
+import { Api } from "@/shared/services/api-client";
 
 interface Props {
   className?: string;
@@ -25,6 +27,7 @@ export default function CheckoutPage({ className }: Props) {
   const [submitting, setSubmitting] = React.useState(false);
   const { totalAmount, updateItemQuantity, items, removeCartItem, loading } =
     useCart(true);
+  const { data: session } = useSession();
 
   const form = useForm<ChechoutFormValues>({
     resolver: zodResolver(checkoutFormSchema),
@@ -44,7 +47,7 @@ export default function CheckoutPage({ className }: Props) {
 
       const url = await createOrder(data);
 
-      toast.success("Замовлення успішно оформлено! 📝 Перехід до оплати...");
+      toast.success("Замовлення успішно оформлено 🎉! 📝 Перехід до оплати...");
 
       if (url) {
         location.href = url;
@@ -64,6 +67,23 @@ export default function CheckoutPage({ className }: Props) {
   ) => {
     updateItemQuantity(id, type === "plus" ? quantity + 1 : quantity - 1);
   };
+
+  React.useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await Api.auth.getMe();
+        const [firstName, lastName] = data.fullName.split(" ");
+
+        form.setValue("firstName", firstName);
+        form.setValue("lastName", lastName);
+        form.setValue("email", data.email);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [session]);
+
   return (
     <div className={className}>
       <Container>

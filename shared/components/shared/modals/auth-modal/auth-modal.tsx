@@ -16,6 +16,7 @@ export const AuthModal: React.FC<Props> = ({
   className,
 }) => {
   const [type, setType] = React.useState<"login" | "register">("login");
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const onSwitchType = () => {
     setType(type === "login" ? "register" : "login");
@@ -24,24 +25,37 @@ export const AuthModal: React.FC<Props> = ({
   const handleClose = () => {
     onClose();
   };
+
+  const onClickProvider = async (
+    provider: "github" | "google",
+    callbackUrl: string,
+    redirect: boolean = true
+  ) => {
+    setIsLoading(true);
+    await signIn(provider, {
+      callbackUrl,
+      redirect,
+    });
+    setIsLoading(false);
+  };
+
   return (
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="w-[450px] bg-white p-10">
         {type === "login" ? (
-          <LoginForm onClose={onClose} className={className} />
+          <LoginForm
+            isLoading={isLoading}
+            onClose={onClose}
+            className={className}
+          />
         ) : (
-          <RegisterForm className={className} />
+          <RegisterForm onClose={onClose} className={className} />
         )}
         <hr />
         <div className="flex gap-2">
           <Button
             variant="secondary"
-            onClick={() =>
-              signIn("github", {
-                callbackUrl: "/",
-                redirect: true,
-              })
-            }
+            onClick={() => onClickProvider("github", "/")}
             type="button"
             className="gap-2 h-12 p-2 flex-1"
           >
@@ -54,12 +68,7 @@ export const AuthModal: React.FC<Props> = ({
 
           <Button
             variant="secondary"
-            onClick={() =>
-              signIn("google", {
-                callbackUrl: "/",
-                redirect: true,
-              })
-            }
+            onClick={() => onClickProvider("google", "/")}
             type="button"
             className="gap-2 h-12 p-2 flex-1"
           >

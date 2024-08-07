@@ -5,6 +5,7 @@ import { cn } from "@/shared/lib/utils";
 import { ProductCard } from "./product-card";
 import { useIntersection } from "react-use";
 import { useCategoryStore } from "@/shared/store/category";
+import Link from "next/link";
 interface Props {
   title: string;
   products: any[];
@@ -40,15 +41,23 @@ export const ProductsGroupList: React.FC<Props> = ({
 
       <div className={cn("grid grid-cols-3 gap-[50px]", listClassName)}>
         {products.map((product) => (
-          <ProductCard
+          <Link
+            className="flex justify-between"
             key={product.id}
-            id={product.id}
-            name={product.name}
-            price={product.items[0].price}
-            ingredients={product.ingredients}
-            imageUrl={product.imageUrl}
-            className="col-span-1"
-          />
+            scroll={false}
+            href={`/product/${product.id}`}
+          >
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              price={product.items[0].price}
+              ingredients={product.ingredients}
+              description={product.description}
+              imageUrl={product.imageUrl}
+              className="col-span-1"
+            />
+          </Link>
         ))}
       </div>
     </div>
