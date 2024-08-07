@@ -1,10 +1,10 @@
 "use client";
 
 import { ArrowRight, ShoppingCart } from "lucide-react";
-import { Button } from "../ui";
 import { CartDrawer } from "./cart-drawer";
 import { useCartStore } from "@/shared/store/cart";
 import { cn } from "@/shared/lib/utils";
+import { Button } from "../ui/button";
 
 export const CartButton = () => {
   const { items, totalAmount, loading } = useCartStore((state) => state);

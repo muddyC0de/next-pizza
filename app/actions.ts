@@ -114,7 +114,7 @@ export async function createOrder(data: ChechoutFormValues) {
         orderId: order.id,
         totalAmount: order.totalAmount,
         paymentUrl: paymentLink.url,
-      })
+      }) as string
     );
 
     return paymentLink.url;
@@ -190,7 +190,7 @@ export async function registerUser(body: Prisma.UserCreateInput) {
       "Next Pizza / Підтвердження реєстрації",
       VerificationUserTemplate({
         code,
-      })
+      }) as string
     );
   } catch (error: any) {
     console.log("[RegisterUser] Server error", error);

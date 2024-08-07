@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    const code = req.nextUrl.searchParams.get("code");
-    const email = req.nextUrl.searchParams.get("email");
-    const password = req.nextUrl.searchParams.get("password");
-
+    // const code = req.nextUrl.searchParams.get("code");
+    // const email = req.nextUrl.searchParams.get("email");
+    // const password = req.nextUrl.searchParams.get("password");
+    const code = "";
     if (!code) {
       return NextResponse.json({ error: "Невірний код" }, { status: 404 });
     }

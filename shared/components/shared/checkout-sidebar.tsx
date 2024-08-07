@@ -1,7 +1,8 @@
 import React from "react";
 import { WhiteBlock } from "./white-block";
 import { ArrowRight, Package, Truck } from "lucide-react";
-import { Button, Skeleton } from "../ui";
+import { Skeleton } from "../ui";
+import { Button } from "../ui/button";
 
 interface Props {
   className?: string;

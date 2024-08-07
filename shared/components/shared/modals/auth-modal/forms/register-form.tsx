@@ -8,11 +8,11 @@ import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import { Title } from "../../../title";
 import { FormInput } from "../../../form-components";
-import { Button } from "@/shared/components/ui";
 import { registerUser } from "@/app/actions";
+import { Button } from "@/shared/components/ui/button";
 
 interface Props {
-  isLoading: boolean;
+  isLoading?: boolean;
   onClose: () => void;
   className?: string;
 }

@@ -3,7 +3,6 @@
 import { cn } from "@/shared/lib/utils";
 import { PizzaImage } from "./pizza-image";
 import { Title } from "./title";
-import { Button } from "../ui";
 import React from "react";
 import {
   mapPizzaTypes,
@@ -16,6 +15,7 @@ import { Ingredient, Variation } from "@prisma/client";
 import { IngredientCard } from "./ingredient-card";
 import { useSet } from "react-use";
 import { calcPizzaPrice, getAvailablePizzaSizes } from "@/shared/lib";
+import { Button } from "../ui/button";
 
 interface Props {
   imageUrl: string;

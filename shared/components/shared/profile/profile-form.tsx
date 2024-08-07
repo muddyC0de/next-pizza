@@ -10,9 +10,9 @@ import { signOut } from "next-auth/react";
 import { Container } from "../container";
 import { Title } from "../title";
 import { FormInput } from "../form-components";
-import { Button } from "../../ui";
 import { updateUserInfo } from "@/app/actions";
 import { profileFormSchema, TFormProfileValues } from "./schemas";
+import { Button } from "../../ui/button";
 
 interface Props {
   data: User;

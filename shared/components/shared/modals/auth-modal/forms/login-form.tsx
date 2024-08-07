@@ -6,9 +6,9 @@ import { formLoginSchema, TFormLoginValues } from "./schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Title } from "../../../title";
 import { FormInput } from "../../../form-components";
-import { Button } from "@/shared/components/ui";
 import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
+import { Button } from "@/shared/components/ui/button";
 
 interface Props {
   isLoading: boolean;

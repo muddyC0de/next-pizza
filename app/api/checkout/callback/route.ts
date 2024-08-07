@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
           orderId: order.id,
           totalAmount: order.totalAmount,
           items,
-        })
+        }) as string
       );
     }
     return NextResponse.json({ status: 200 });

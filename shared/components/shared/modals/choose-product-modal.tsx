@@ -4,11 +4,11 @@ import { Dialog } from "@/shared/components/ui";
 import { DialogContent, DialogTitle } from "@/shared/components/ui/dialog";
 import { useRouter } from "next/navigation";
 import { ChooseProductForm } from "../choose-product-form";
-import { ProductWithRelation } from "@/app/@types/prisma";
 import { ChoosePizzaForm } from "../choose-pizza-form";
 import { useCartStore } from "@/shared/store/cart";
 import toast from "react-hot-toast";
 import React from "react";
+import { ProductWithRelation } from "@/@types/prisma";
 
 interface Props {
   product: ProductWithRelation;

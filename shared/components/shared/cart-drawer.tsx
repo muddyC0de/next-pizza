@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Button, Sheet } from "../ui";
+import { Sheet } from "../ui";
 import {
   SheetClose,
   SheetContent,
@@ -19,6 +19,7 @@ import { PizzaSize, PizzaType } from "@/shared/constanst/pizza";
 import Image from "next/image";
 import { Title } from "./title";
 import { cn } from "@/shared/lib/utils";
+import { Button } from "../ui/button";
 
 interface Props {
   className?: string;

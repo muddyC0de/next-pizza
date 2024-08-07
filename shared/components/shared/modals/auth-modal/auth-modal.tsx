@@ -1,9 +1,9 @@
 import React from "react";
-import { Button, Dialog } from "../../../ui";
-import { DialogContent } from "../../../ui/dialog";
+import { Dialog, DialogContent } from "../../../ui/dialog";
 import { signIn } from "next-auth/react";
 import { LoginForm } from "./forms/login-form";
 import { RegisterForm } from "./forms/register-form";
+import { Button } from "@/shared/components/ui/button";
 interface Props {
   open?: boolean;
   onClose: () => void;

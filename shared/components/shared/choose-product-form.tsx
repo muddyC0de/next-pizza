@@ -1,6 +1,6 @@
 import { cn } from "@/shared/lib/utils";
 import { Title } from "./title";
-import { Button } from "../ui";
+import { Button } from "../ui/button";
 
 interface Props {
   imageUrl: string;

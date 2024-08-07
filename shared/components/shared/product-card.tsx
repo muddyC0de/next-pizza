@@ -1,11 +1,9 @@
 import { Plus } from "lucide-react";
 import React from "react";
-import { Title } from "./title";
-import { Button } from "../ui";
-import Link from "next/link";
 import { Ingredient } from "@prisma/client";
 import { getCartItemDetails } from "@/shared/lib";
 import { cn } from "@/shared/lib/utils";
+import { Button } from "../ui/button";
 export interface ProductProps {
   id: number;
   name: string;
