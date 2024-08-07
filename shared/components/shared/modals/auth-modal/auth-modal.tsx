@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import { LoginForm } from "./forms/login-form";
 import { RegisterForm } from "./forms/register-form";
 import { Button } from "@/shared/components/ui/button";
+import toast from "react-hot-toast";
 interface Props {
   open?: boolean;
   onClose: () => void;
@@ -36,6 +37,7 @@ export const AuthModal: React.FC<Props> = ({
       callbackUrl,
       redirect,
     });
+    toast.success("Успішний вхід в аккаунт!");
     setIsLoading(false);
   };
 
