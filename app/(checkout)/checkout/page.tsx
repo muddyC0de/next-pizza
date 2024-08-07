@@ -2,7 +2,7 @@
 
 import { useCart } from "@/hooks/use-cart";
 import { CheckoutSidebar, Container, Title } from "@/shared/components/shared";
-import { Form, FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import {
@@ -19,11 +19,7 @@ import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import { Api } from "@/shared/services/api-client";
 
-interface Props {
-  className?: string;
-}
-
-export default function CheckoutPage({ className }: Props) {
+export default function CheckoutPage() {
   const [submitting, setSubmitting] = React.useState(false);
   const { totalAmount, updateItemQuantity, items, removeCartItem, loading } =
     useCart(true);
@@ -85,7 +81,7 @@ export default function CheckoutPage({ className }: Props) {
   }, [session]);
 
   return (
-    <div className={className}>
+    <div>
       <Container>
         <Title
           text="Оформлення замовлення"

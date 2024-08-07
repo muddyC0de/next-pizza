@@ -16,8 +16,6 @@ import { Ingredient, Variation } from "@prisma/client";
 import { IngredientCard } from "./ingredient-card";
 import { useSet } from "react-use";
 import { calcPizzaPrice, getAvailablePizzaSizes } from "@/shared/lib";
-import { useParams } from "next/navigation";
-import { Loader2 } from "lucide-react";
 
 interface Props {
   imageUrl: string;
