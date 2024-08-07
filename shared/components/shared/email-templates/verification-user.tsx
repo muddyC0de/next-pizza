@@ -13,7 +13,7 @@ export const VerificationUserTemplate: React.FC<PayOrderTemplateProps> = ({
       Ваш код підтвердження: <h2>${code}</h2>
     </p>
     <p>
-      <a href="http://localhost:3000/api/auth/verify?code=${code}">
+      <a href="https://next-pizza-ashen.vercel.app/api/auth/verify?code=${code}">
         Підтвердіть реєстрацію
       </a>
     </p>
