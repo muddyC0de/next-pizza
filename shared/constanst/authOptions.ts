@@ -86,6 +86,9 @@ export const authOptions: AuthOptions = {
   },
 
   callbacks: {
+    async redirect({ url, baseUrl }) {
+      return baseUrl + "/";
+    },
     async signIn({ user, account }) {
       try {
         if (account?.provider === "credentials") {
