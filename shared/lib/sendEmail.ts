@@ -8,8 +8,8 @@ export const sendEmail = async (
   const transport = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "next.pizza.dev@gmail.com",
-      pass: "vwuy fraq kqrx zbtq",
+      user: process.env.NODEMAILER_USER,
+      pass: process.env.NODEMAILER_PASS,
     },
   });
 
@@ -22,7 +22,7 @@ export const sendEmail = async (
 
   try {
     const sendResult = await transport.sendMail({
-      from: "next.pizza.dev@gmail.com",
+      from: process.env.NODEMAILER_USER,
       to,
       subject,
       html: template,
