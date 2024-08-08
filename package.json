@@ -46,6 +46,7 @@
     "react-google-autocomplete": "^2.7.3",
     "react-hook-form": "^7.52.2",
     "react-hot-toast": "^2.4.1",
+    "react-insta-stories": "^2.7.0",
     "react-use": "^17.5.0",
     "resend": "^3.5.0",
     "stripe": "^16.5.0",

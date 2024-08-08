@@ -3,6 +3,7 @@ import { ProductsGroupList } from "@/shared/components/shared/products-group-lis
 import React, { Suspense } from "react";
 import { findPizzas } from "@/shared/lib";
 import { GetSearchParams } from "@/shared/lib/find-pizzas";
+import { Stories } from "@/shared/components/shared/stories";
 
 export default async function Home({
   searchParams,
@@ -18,7 +19,7 @@ export default async function Home({
       <TopBar
         categories={categoires.filter((cat) => cat.products.length > 0)}
       />
-
+      <Stories />
       <Container className="pb-14 mt-10">
         <div className="flex gap-[80px]">
           {/* Фільтрація */}

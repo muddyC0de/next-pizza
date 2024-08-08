@@ -12,6 +12,17 @@ export const OrderSuccesTemplate: React.FC<PayOrderTemplateProps> = ({
   totalAmount,
   items,
 }) => {
+  const itemsHtml = items
+    .map(
+      (item) => `
+      <li key="${item.id}">
+        ${item.productItem.product.name} | ${item.productItem.price} ₴ x ${
+        item.quantity
+      } шт. = ${item.productItem.price * item.quantity} ₴
+      </li>
+    `
+    )
+    .join("");
   return `
     <div>
       <h1>Дякуємо за покупку! 🎉</h1>
@@ -19,14 +30,7 @@ export const OrderSuccesTemplate: React.FC<PayOrderTemplateProps> = ({
         Ваше замовлення #${orderId} на суму <b>${totalAmount} ₴</b> було оплачено.
         Список товарів:
       </p>
-      <ul class="p-0">
-        ${items.map((item) => (
-          <li key={item.id}>
-            {item.productItem.product.name} | {item.productItem.price} ₴ x{" "}
-            {item.quantity} шт. = {item.productItem.price * item.quantity} ₴
-          </li>
-        ))}
-      </ul>
+      ${itemsHtml}
     </div>
   `;
 };
