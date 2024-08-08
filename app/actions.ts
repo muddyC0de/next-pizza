@@ -83,7 +83,7 @@ export async function createOrder(data: ChechoutFormValues) {
       after_completion: {
         type: "redirect",
         redirect: {
-          url: "https://next-pizza-ashen.vercel.app/?paid",
+          url: `${process.env.NEXTAUTH_URL}/?paid`,
         },
       },
 
