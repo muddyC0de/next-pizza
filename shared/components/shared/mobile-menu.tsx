@@ -6,6 +6,7 @@ import { LucideIcon, Search, ShoppingBasket, X } from "lucide-react";
 import Link from "next/link";
 import { useStore } from "zustand";
 import { useSearchStore } from "@/shared/store/search";
+import { useSession } from "next-auth/react";
 
 interface Props {
   isOpen: boolean;
@@ -34,6 +35,7 @@ export const MobileMenu: React.FC<Props> = ({
   onOpenAuthModal,
   className,
 }) => {
+  const { data: session, status } = useSession();
   const { isActive, setActive } = useSearchStore((state) => ({
     isActive: state.isActive,
     setActive: state.setActive,
@@ -41,6 +43,7 @@ export const MobileMenu: React.FC<Props> = ({
 
   const handleClickProfile = () => {
     onClose();
+    if (status === "authenticated") return;
     onOpenAuthModal();
   };
 
@@ -62,7 +65,7 @@ export const MobileMenu: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        "bg-[#f7f6f5] z-[99999999] hidden opacity-0  duration-150 h-full  flex-col justify-center items-center absolute top-0 left-0 w-full",
+        "bg-[#f7f6f5] z-[99999999] hidden opacity-0  duration-150 h-full  flex-col justify-center items-center fixed top-0 left-0 w-full",
         isOpen && "opacity-100 flex",
         className
       )}
