@@ -3,8 +3,9 @@
 import React from "react";
 import { cn } from "@/shared/lib/utils";
 import { X } from "lucide-react";
-import { CountButton, CountButtonProps } from "./count-button";
+import { CountButton, type CountButtonProps } from "./count-button";
 import { Title } from "./title";
+import Image from "next/image";
 
 interface Props {
   id: number;
@@ -42,34 +43,49 @@ export const CartItem: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        "flex items-center justify-between",
+        "flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4",
         disabled && "opacity-50 pointer-events-none",
         className
       )}
     >
-      <div className="flex items-center gap-5 flex-1">
-        <img height={65} width={65} src={imageUrl} alt="" />
+      {/* Product info section */}
+      <div className="flex items-center gap-3 sm:gap-5 flex-1 w-full sm:w-auto">
+        <div className="relative h-16 w-16 sm:h-[65px] sm:w-[65px] flex-shrink-0">
+          <Image
+            fill
+            src={imageUrl || "/placeholder.svg"}
+            alt={name}
+            className="object-cover"
+          />
+        </div>
         <div className="flex flex-col">
           <Title text={name} size="xs" className="font-extrabold" />
           <p className="text-gray-400 text-sm">{info}</p>
-          <p className="text-gray-400 text-[12px] break-all  w-[90%]">
+          <p className="text-gray-400 text-[12px] break-words max-w-[200px] sm:max-w-none sm:w-[90%]">
             {details && `+ ${details.toLowerCase()}`}
           </p>
         </div>
       </div>
 
-      <span className="font-bold">{price} ₴</span>
+      {/* Price and controls section */}
+      <div className="flex items-center justify-between w-full sm:w-auto sm:justify-end gap-4 sm:gap-5 mt-2 sm:mt-0">
+        <span className="font-bold whitespace-nowrap">{price} ₴</span>
 
-      <div className="flex items-center gap-5 ml-20">
-        <div className="flex gap-2 items-center">
-          <CountButton onClick={onClickCountButton} value={quantity} />
+        <div className="flex items-center gap-3 sm:gap-5">
+          <div className="flex gap-2 items-center">
+            <CountButton onClick={onClickCountButton} value={quantity} />
+          </div>
+          <button
+            onClick={onClickRemove}
+            className="p-1"
+            aria-label="Remove item"
+          >
+            <X
+              className="text-gray-400 cursor-pointer hover:text-gray-600"
+              size={20}
+            />
+          </button>
         </div>
-        <button onClick={onClickRemove}>
-          <X
-            className="text-gray-400 cursor-pointer hover:text-gray-600"
-            size={20}
-          />
-        </button>
       </div>
     </div>
   );

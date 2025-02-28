@@ -19,8 +19,8 @@ export const CheckoutSidebar: React.FC<Props> = ({
   className,
 }) => {
   return (
-    <div className="w-[450px]">
-      <WhiteBlock className="p-6 sticky top-4">
+    <div className="w-full md:w-[450px]">
+      <WhiteBlock className="p-0 md:p-6 sticky top-4">
         <div className="flex flex-col gap-1">
           <span className="text-xl">Всього:</span>
 

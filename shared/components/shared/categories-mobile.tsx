@@ -11,7 +11,10 @@ interface Props {
   categories: Category[];
 }
 
-export const Categories: React.FC<Props> = ({ categories, className }) => {
+export const CategoriesMobile: React.FC<Props> = ({
+  categories,
+  className,
+}) => {
   const activeId = useCategoryStore((state) => state.activeId);
   const setActiveId = useCategoryStore((state) => state.setActiveId);
 
@@ -22,16 +25,15 @@ export const Categories: React.FC<Props> = ({ categories, className }) => {
   return (
     <div
       className={cn(
-        "inline-flex gap-1 bg-gray-50 p-1 overflow-x-auto rounded-2xl",
+        "inline-flex gap-2 p-1 overflow-x-auto rounded-2xl",
         className
       )}
     >
       {categories.map((cat) => (
         <Link
           className={cn(
-            "flex items-center font-bold h-11 rounded-2xl px-5",
-            activeId === cat.id &&
-              "bg-white shadow-md shadow-gray-200 text-primary"
+            "flex bg-slate-100/60  text-gray-500 items-center font-bold text-sm h-11 rounded-2xl px-5",
+            activeId === cat.id && " text-primary bg-primary/10"
           )}
           href={`/#${cat.name}`}
           onClick={() => handleClick(cat.id)}

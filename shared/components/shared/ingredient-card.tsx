@@ -1,6 +1,7 @@
 import { cn } from "@/shared/lib/utils";
-import { Ingredient } from "@prisma/client";
+
 import { CircleCheck } from "lucide-react";
+import Image from "next/image";
 
 interface Props {
   id: number;
@@ -39,7 +40,7 @@ export const IngredientCard: React.FC<Props> = ({
         )}
       />
       <div className="flex flex-col items-center">
-        <img
+        <Image
           className="mb-1"
           height={110}
           width={110}

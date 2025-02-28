@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Dialog, DialogContent } from "../../../ui/dialog";
 import { signIn } from "next-auth/react";
@@ -5,6 +7,7 @@ import { LoginForm } from "./forms/login-form";
 import { RegisterForm } from "./forms/register-form";
 import { Button } from "@/shared/components/ui/button";
 import toast from "react-hot-toast";
+
 interface Props {
   open?: boolean;
   onClose: () => void;
@@ -30,7 +33,7 @@ export const AuthModal: React.FC<Props> = ({
   const onClickProvider = async (
     provider: "github" | "google",
     callbackUrl: string,
-    redirect: boolean = true
+    redirect = true
   ) => {
     setIsLoading(true);
     await signIn(provider, {
@@ -43,7 +46,7 @@ export const AuthModal: React.FC<Props> = ({
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="w-[450px] bg-white p-10">
+      <DialogContent className="w-[90%] rounded-md xs:w-[450px] max-w-full bg-white p-4 sm:p-6 md:p-10">
         {type === "login" ? (
           <LoginForm
             isLoading={isLoading}
@@ -53,8 +56,8 @@ export const AuthModal: React.FC<Props> = ({
         ) : (
           <RegisterForm onClose={onClose} className={className} />
         )}
-        <hr />
-        <div className="flex gap-2">
+        <hr className="my-4" />
+        <div className="flex flex-row gap-2">
           <Button
             variant="secondary"
             onClick={() => onClickProvider("github", "/")}
@@ -62,10 +65,11 @@ export const AuthModal: React.FC<Props> = ({
             className="gap-2 h-12 p-2 flex-1"
           >
             <img
-              className="w-6 h-6"
+              className="w-5 h-5 sm:w-6 sm:h-6"
               src="https://github.githubassets.com/favicons/favicon.svg"
+              alt="GitHub logo"
             />
-            GitHub
+            <span className="text-sm sm:text-base">GitHub</span>
           </Button>
 
           <Button
@@ -75,19 +79,20 @@ export const AuthModal: React.FC<Props> = ({
             className="gap-2 h-12 p-2 flex-1"
           >
             <img
-              className="w-6 h-6"
+              className="w-5 h-5 sm:w-6 sm:h-6"
               src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg"
+              alt="Google logo"
             />
-            Google
+            <span className="text-sm sm:text-base">Google</span>
           </Button>
         </div>
         <Button
           variant={"outline"}
           onClick={onSwitchType}
           type="button"
-          className="h-12"
+          className="h-10 sm:h-12 mt-2 text-sm sm:text-base"
         >
-          {type === "login" ? "Зареєструватися" : "Увійти"}
+          {type === "login" ? "Зареєструватися" : "Увійти"}
         </Button>
       </DialogContent>
     </Dialog>

@@ -32,7 +32,7 @@ export const Variants: React.FC<Props> = ({
         <button
           onClick={() => handleChangeVariant(option.value)}
           className={cn(
-            "flex items-center font-medium justify-center cursor-pointer h-[30px] px-5 flex-1 rounded-3xl transition-all  duration-400 text-sm",
+            "flex items-center font-medium justify-center cursor-pointer h-[30px] px-2 flex-1 rounded-3xl transition-all  duration-400 text-sm",
             option.value === selectedValue && "bg-white",
             option.disabled && "text-gray-500 opacity-50 pointer-events-none"
           )}

@@ -13,10 +13,11 @@ export const CartButton = () => {
       <Button
         loading={loading}
         variant="default"
+        size={"default"}
         className={cn("group relative", { "w-[105px]": loading })}
       >
-        <b>{totalAmount || 0} ₴</b>
-        <span className="h-full w-[1px] bg-white/30 mx-3"></span>
+        <b className="hidden xs:block">{totalAmount || 0} ₴</b>
+        <span className="h-full hidden xs:block w-[1px] bg-white/30 mx-3"></span>
         <div className="flex items-center gap-1 transition duration-300 group-hover:opacity-0">
           <ShoppingCart
             size={16}

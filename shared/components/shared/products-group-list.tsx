@@ -39,7 +39,12 @@ export const ProductsGroupList: React.FC<Props> = ({
     <div ref={intersectionRef} id={title} className={className}>
       <Title text={title} size="lg" className="font-extrabold mb-3" />
 
-      <div className={cn("grid grid-cols-3 gap-[50px]", listClassName)}>
+      <div
+        className={cn(
+          "grid gap-5 grid-cols-1 xs:grid-cols-2  md:grid-cols-3 ",
+          listClassName
+        )}
+      >
         {products.map((product) => (
           <Link
             className="flex justify-between"
@@ -55,7 +60,7 @@ export const ProductsGroupList: React.FC<Props> = ({
               ingredients={product.ingredients}
               description={product.description}
               imageUrl={product.imageUrl}
-              className="col-span-1"
+              className="w-full"
             />
           </Link>
         ))}

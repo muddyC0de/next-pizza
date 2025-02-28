@@ -76,12 +76,18 @@ export const ChoosePizzaForm: React.FC<Props> = ({
     }
   }, [type]);
   return (
-    <div className={cn(className, "flex flex-1")}>
-      <PizzaImage imageUrl={imageUrl} size={size} />
-      <div className="w-[490px] bg-[#f7f6f5] p-7">
-        <Title text={name} size="md" className="mb-1 font-extrabold" />
+    <div
+      className={cn(
+        className,
+        "flex flex-col lg:flex-row lg:flex-1 items-center lg:items-start"
+      )}
+    >
+      {" "}
+      <PizzaImage imageUrl={imageUrl} size={size} className="mb-5" />
+      <div className="w-full  max-w-[490px] bg-[#f7f6f5] p-5 lg:p-7 rounded-lg lg:shadow-md">
+        <Title text={name} size="md" className="mb-1  font-extrabold" />
 
-        <p className="text-gray-400 mb-7">
+        <p className="text-gray-400 mb-7 text-sm md:text-base">
           {size} см, {mapPizzaTypes[type].toLowerCase()} тісто
         </p>
         <div className="flex flex-col select-none gap-2 mb-7">
@@ -101,8 +107,8 @@ export const ChoosePizzaForm: React.FC<Props> = ({
           size="sm"
           className="mb-3 font-semibold"
         />
-        <div className="overflow-auto h-[420px] bg-gray-50 p-5 rounded-md scrollbar">
-          <div className="grid grid-cols-3 gap-3">
+        <div className="overflow-auto max-h-[420px] bg-gray-50 p-5 rounded-md scrollbar">
+          <div className="grid auto-rows-auto grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-3">
             {ingredients.map((ingredient) => (
               <IngredientCard
                 key={ingredient.id}
@@ -120,7 +126,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
         <Button
           loading={isLoading}
           onClick={handleClickAdd}
-          className={"h-[55px] px-10 text-base rounded-[18px] w-full mt-7"}
+          className="h-[50px] px-6 text-base rounded-lg w-full mt-5 md:mt-7"
         >
           Додати в корзину за {totalPrice} ₴
         </Button>

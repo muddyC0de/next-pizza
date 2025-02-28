@@ -1,5 +1,6 @@
 import { Plus } from "lucide-react";
 import React from "react";
+import Image from "next/image";
 import { Ingredient } from "@prisma/client";
 import { getCartItemDetails } from "@/shared/lib";
 import { cn } from "@/shared/lib/utils";
@@ -27,7 +28,13 @@ export const ProductCard: React.FC<ProductProps> = ({
     <div className={cn(className, "flex [flex-flow:column] justify-between")}>
       <div>
         <div className="flex justify-center p-6 bg-secondary rounded-lg h-[260px]">
-          <img className="w-[215px] h-[215px]" src={imageUrl} alt={name} />
+          <Image
+            src={imageUrl}
+            alt={name}
+            width={215}
+            height={215}
+            className="w-full h-auto max-w-[215px] max-h-[215px] object-contain"
+          />
         </div>
         <h1 className="mb-1 mt-3 font-bold text-[20px]">{name}</h1>
         <p className="text-sm text-gray-400 ">

@@ -1,9 +1,13 @@
+"use client";
+
 import { cn } from "@/shared/lib/utils";
 import React from "react";
 import { Container } from "./container";
 import { Categories } from "./categoires";
 import { Sort } from "./sort";
 import { Category } from "@prisma/client";
+import { FiltersDrawer } from "./filters-drawer";
+import { CategoriesMobile } from "./categories-mobile";
 
 interface Props {
   className?: string;
@@ -18,9 +22,17 @@ export const TopBar: React.FC<Props> = ({ categories, className }) => {
         className
       )}
     >
-      <Container className="flex items-center justify-between">
-        <Categories categories={categories} />
-        <Sort />
+      <Container className="flex items-center justify-center md:justify-between">
+        <div className="md:hidden overflow-x-auto">
+          <CategoriesMobile categories={categories} />
+        </div>
+        <div className="hidden md:block overflow-x-auto">
+          <Categories categories={categories} />
+        </div>
+        <div className="hidden md:block">
+          <FiltersDrawer />
+          <Sort />
+        </div>
       </Container>
     </div>
   );

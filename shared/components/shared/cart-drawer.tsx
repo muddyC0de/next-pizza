@@ -56,7 +56,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
-      <SheetContent className="flex flex-col justify-between pb-0 bg-[#f4f1ee]">
+      <SheetContent className="flex w-full flex-col justify-between pb-0 bg-[#f4f1ee]">
         <div
           className={cn(
             "flex flex-col h-full",

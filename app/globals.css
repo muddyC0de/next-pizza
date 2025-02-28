@@ -48,6 +48,18 @@ html {
   }
 }
 
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hidden {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
 * {
   font-family: var(--font-nunito), sans-serif;
 }
@@ -95,4 +107,13 @@ html {
 
 #nprogress .spinner-icon {
   @apply border-t-primary border-l-primary !important;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

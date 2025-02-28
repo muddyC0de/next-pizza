@@ -82,40 +82,38 @@ export default function CheckoutPage() {
 
   return (
     <div>
-      <Container>
-        <Title
-          text="Оформлення замовлення"
-          size="lg"
-          className="font-extrabold mt-7 text-[36px] mb-11"
-        />
-        <FormProvider {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="flex gap-10">
-              {/* Left side */}
-              <div className="flex flex-col gap-10 flex-1 mb-20">
-                <CheckoutCart
-                  items={items}
-                  onClickCountButton={onClickCountButton}
-                  removeCartItem={removeCartItem}
-                  loading={loading}
-                />
-                <CheckoutPersonalInfo
-                  className={loading ? "opacity-40 pointer-events-none" : ""}
-                />
+      <Title
+        text="Оформлення замовлення"
+        size="lg"
+        className="font-extrabold mt-7 text-[36px]  mb-11"
+      />
+      <FormProvider {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <div className="flex flex-col gap-10 md:flex-row">
+            {/* Left side */}
+            <div className="flex flex-col gap-10 flex-1 mb-20">
+              <CheckoutCart
+                items={items}
+                onClickCountButton={onClickCountButton}
+                removeCartItem={removeCartItem}
+                loading={loading}
+              />
+              <CheckoutPersonalInfo
+                className={loading ? "opacity-40 pointer-events-none" : ""}
+              />
 
-                <CheckoutDeliveryInfo
-                  className={loading ? "opacity-40 pointer-events-none" : ""}
-                />
-              </div>
-              {/* Right side */}
-              <CheckoutSidebar
-                loading={loading || submitting}
-                totalAmount={totalAmount}
+              <CheckoutDeliveryInfo
+                className={loading ? "opacity-40 pointer-events-none" : ""}
               />
             </div>
-          </form>
-        </FormProvider>
-      </Container>
+            {/* Right side */}
+            <CheckoutSidebar
+              loading={loading || submitting}
+              totalAmount={totalAmount}
+            />
+          </div>
+        </form>
+      </FormProvider>
     </div>
   );
 }

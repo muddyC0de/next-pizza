@@ -1,9 +1,12 @@
-import { Container, Filters, Title, TopBar } from "@/shared/components/shared";
+import { Container, Filters, TopBar } from "@/shared/components/shared";
 import { ProductsGroupList } from "@/shared/components/shared/products-group-list";
 import React, { Suspense } from "react";
 import { findPizzas } from "@/shared/lib";
 import { GetSearchParams } from "@/shared/lib/find-pizzas";
 import { Stories } from "@/shared/components/shared/stories";
+import { Button } from "@/shared/components/ui/button";
+import { ListFilter } from "lucide-react";
+import { FiltersDrawer } from "@/shared/components/shared/filters-drawer";
 
 export default async function Home({
   searchParams,
@@ -11,11 +14,9 @@ export default async function Home({
   searchParams: GetSearchParams;
 }) {
   const categoires = await findPizzas(searchParams);
+  console.log(searchParams);
   return (
     <>
-      <Container className="mt-10">
-        <Title text="Всі піцци" size="lg" className="font-extrabold" />
-      </Container>
       <TopBar
         categories={categoires.filter((cat) => cat.products.length > 0)}
       />
@@ -23,7 +24,7 @@ export default async function Home({
       <Container className="pb-14 mt-10">
         <div className="flex gap-[80px]">
           {/* Фільтрація */}
-          <div className="w-[250px]">
+          <div className="w-[250px] hidden lg:block">
             <Suspense>
               <Filters />
             </Suspense>
@@ -44,6 +45,7 @@ export default async function Home({
           </div>
         </div>
       </Container>
+      <FiltersDrawer />
     </>
   );
 }
