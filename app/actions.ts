@@ -18,7 +18,7 @@ export async function createOrder(data: ChechoutFormValues) {
     );
 
     const cookieStore = cookies();
-    const cartToken = cookieStore.get("cartToken")?.value;
+    const cartToken = (await cookieStore).get("cartToken")?.value;
     if (!cartToken) {
       throw new Error("Корзина не існує");
     }
