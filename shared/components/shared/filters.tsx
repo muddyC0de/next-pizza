@@ -7,8 +7,9 @@ import { CheckboxFiltersGroup } from "./checkbox-filters-group";
 import { Api } from "@/shared/services/api-client";
 import qs from "qs";
 import { Input } from "../ui";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useQueryStore } from "@/shared/store/query";
+import { useInitializeFilters } from "@/hooks/use-initialize-filters";
 interface Props {
   className?: string;
 }
@@ -25,6 +26,7 @@ export type IngredientItem = {
 
 export const Filters: React.FC<Props> = ({ className }) => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const isMounted = React.useRef(false);
   const {
     selectedIngredients,
@@ -72,40 +74,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
     isMounted.current = true;
   }, [selectedSizes, selectedIngredients, selectedPizzaTypes, price, sortBy]);
 
-  React.useEffect(() => {
-    if (typeof window === "undefined") return; // Проверяем, что код выполняется на клиенте
-
-    const params = new URLSearchParams(window.location.search);
-
-    const sizes = params.get("sizes")?.split(",") || [];
-    const ingredients = params.get("ingredients")?.split(",") || [];
-    const pizzaTypes = params.get("pizzaTypes")?.split(",") || [];
-    const sortBy = params.get("sortBy") || null;
-    const priceFrom = params.get("priceFrom")
-      ? Number(params.get("priceFrom"))
-      : undefined;
-    const priceTo = params.get("priceTo")
-      ? Number(params.get("priceTo"))
-      : undefined;
-
-    // Устанавливаем значения в Zustand
-    selectedSizes.clear();
-    selectedIngredients.clear();
-    selectedPizzaTypes.clear();
-
-    sizes.forEach((size) => toggleSize(size));
-    ingredients.forEach((ingredient) => toggleIngredient(ingredient));
-    pizzaTypes.forEach((type) => togglePizzaTypes(type));
-
-    if (sortBy) {
-      useQueryStore.setState({ sortBy });
-    }
-
-    if (priceFrom !== undefined && priceTo !== undefined) {
-      setPrice({ priceFrom, priceTo });
-    }
-  }, []);
-
+  useInitializeFilters(setPrice);
   return (
     <div className={className}>
       {/* Верхні чекбокси */}

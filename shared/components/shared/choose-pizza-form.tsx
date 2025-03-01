@@ -84,7 +84,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
     >
       {" "}
       <PizzaImage imageUrl={imageUrl} size={size} className="mb-5" />
-      <div className="w-full  max-w-[490px] bg-[#f7f6f5] p-5 lg:p-7 rounded-lg lg:shadow-md">
+      <div className="w-full  xs:max-w-[490px] md:max-w-[600px] lg:max-w-[490px] bg-[#f7f6f5] p-5 lg:p-7 rounded-lg lg:shadow-md">
         <Title text={name} size="md" className="mb-1  font-extrabold" />
 
         <p className="text-gray-400 mb-7 text-sm md:text-base">
@@ -108,7 +108,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
           className="mb-3 font-semibold"
         />
         <div className="overflow-auto max-h-[420px] bg-gray-50 p-5 rounded-md scrollbar">
-          <div className="grid auto-rows-auto grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-3">
+          <div className="grid auto-rows-auto xs:grid-cols-[repeat(auto-fit,minmax(100px,1fr))] justify-self-center xs:justify-self-auto grid-cols-2 gap-3">
             {ingredients.map((ingredient) => (
               <IngredientCard
                 key={ingredient.id}

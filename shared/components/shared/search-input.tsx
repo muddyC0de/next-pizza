@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Api } from "@/shared/services/api-client";
 import { Product } from "@prisma/client";
 import { useSearchStore } from "@/shared/store/search";
+import Image from "next/image";
 
 interface Props {
   className?: string;
@@ -102,11 +103,14 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
                 key={product.id}
                 onClick={onClickItem}
                 href={`/product/${product.id}`}
+                scroll={false}
               >
                 <div className="px-3 py-2 hover:bg-primary/10 cursor-pointer">
                   <div className="flex gap-3 align-center">
-                    <img
-                      className="rounded-sm h-8 w-8"
+                    <Image
+                      className="rounded-sm"
+                      width={32}
+                      height={32}
                       src={product.imageUrl}
                       alt={product.name}
                     />

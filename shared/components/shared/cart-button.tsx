@@ -14,7 +14,7 @@ export const CartButton = () => {
         loading={loading}
         variant="default"
         size={"default"}
-        className={cn("group relative", { "w-[105px]": loading })}
+        className={cn("group relative", { "w-[61px] xs:w-[122px]": loading })}
       >
         <b className="hidden xs:block">{totalAmount || 0} ₴</b>
         <span className="h-full hidden xs:block w-[1px] bg-white/30 mx-3"></span>
