@@ -2,6 +2,16 @@ import { ChooseProductModal } from "@/shared/components/shared";
 import { prisma } from "@/prisma/prisma-client";
 import { notFound } from "next/navigation";
 
+export async function generateStaticParams() {
+  const products = await prisma.product.findMany({
+    select: { id: true },
+  });
+
+  return products.map((product) => ({
+    id: product.id.toString(),
+  }));
+}
+
 export default async function ProductModalPage({
   params: { id },
 }: {

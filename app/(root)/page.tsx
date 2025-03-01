@@ -3,9 +3,6 @@ import { ProductsGroupList } from "@/shared/components/shared/products-group-lis
 import React, { Suspense } from "react";
 import { findPizzas } from "@/shared/lib";
 import { GetSearchParams } from "@/shared/lib/find-pizzas";
-import { Stories } from "@/shared/components/shared/stories";
-import { Button } from "@/shared/components/ui/button";
-import { ListFilter } from "lucide-react";
 import { FiltersDrawer } from "@/shared/components/shared/filters-drawer";
 
 export default async function Home({
