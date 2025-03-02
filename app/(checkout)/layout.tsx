@@ -1,4 +1,4 @@
-import { Container, Header } from "@/shared/components/shared";
+import { Container, Header } from "@/components/shared";
 import { Metadata } from "next";
 import { Suspense } from "react";
 

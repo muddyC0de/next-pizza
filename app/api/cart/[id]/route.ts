@@ -1,5 +1,5 @@
 import { prisma } from "@/prisma/prisma-client";
-import { updateCartTotalAmount } from "@/shared/lib";
+import { updateCartTotalAmount } from "@/lib";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function PATCH(

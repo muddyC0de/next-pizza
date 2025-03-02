@@ -1,7 +1,7 @@
 import { prisma } from "@/prisma/prisma-client";
-import { OrderSuccesTemplate } from "@/shared/components/shared/email-templates/order-succes";
-import { sendEmail } from "@/shared/lib/sendEmail";
-import { CartItemDTO } from "@/shared/services/dto/cart";
+import { OrderSuccesTemplate } from "@/components/shared/email-templates/order-succes";
+import { sendEmail } from "@/lib/sendEmail";
+import { CartItemDTO } from "@/services/dto/cart";
 import { OrderStatus } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 

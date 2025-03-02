@@ -1,5 +1,5 @@
 import { useSearchParams } from "next/navigation";
-import { useQueryStore } from "@/shared/store/query";
+import { useQueryStore } from "@/store/query";
 import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface PriceProps {

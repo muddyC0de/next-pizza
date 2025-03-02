@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import { Header } from "@/shared/components/shared";
+import { Header } from "@/components/shared";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {

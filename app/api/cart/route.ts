@@ -1,6 +1,6 @@
 import { prisma } from "@/prisma/prisma-client";
-import { findOrCreateCart, updateCartTotalAmount } from "@/shared/lib";
-import { CreateCartItemValues } from "@/shared/services/dto/cart";
+import { findOrCreateCart, updateCartTotalAmount } from "@/lib";
+import { CreateCartItemValues } from "@/services/dto/cart";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {

@@ -1,8 +1,8 @@
-import { CreateCartItemValues } from "@/shared/services/dto/cart";
+import { CreateCartItemValues } from "@/services/dto/cart";
 import debounce from "lodash.debounce";
-import { useCartStore } from "@/shared/store/cart";
+import { useCartStore } from "@/store/cart";
 import React from "react";
-import { CartStateItem } from "@/shared/lib/get-cart-details";
+import { CartStateItem } from "@/lib/get-cart-details";
 
 type ReturnProps = {
   totalAmount: number;

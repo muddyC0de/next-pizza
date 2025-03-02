@@ -1,9 +1,13 @@
-import { Container, Filters, TopBar } from "@/shared/components/shared";
-import { ProductsGroupList } from "@/shared/components/shared/products-group-list";
 import React, { Suspense } from "react";
-import { findPizzas } from "@/shared/lib";
-import { GetSearchParams } from "@/shared/lib/find-pizzas";
-import { FiltersDrawer } from "@/shared/components/shared/filters-drawer";
+import { findPizzas } from "@/lib";
+import { GetSearchParams } from "@/lib/find-pizzas";
+import {
+  Filters,
+  FiltersDrawer,
+  ProductsGroupList,
+  TopBar,
+} from "./_components";
+import { Container } from "@/components/shared";
 
 export default async function Home({
   searchParams,

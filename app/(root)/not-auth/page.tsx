@@ -1,4 +1,4 @@
-import { InfoBlock } from "@/shared/components/shared/info-block";
+import { InfoBlock } from "@/components/shared/info-block";
 
 export default function NotAuthPage() {
   return (
