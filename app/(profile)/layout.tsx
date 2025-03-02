@@ -12,10 +12,11 @@ export default function ProfileLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="min-h-screen bg-[#F4F1EE]">
+    <main className="min-h-screen">
       <Suspense>
         {" "}
         <Header
+          isShowProfile={false}
           isShowSearch={false}
           isShowCart={false}
           className="border-b-gray-200"
