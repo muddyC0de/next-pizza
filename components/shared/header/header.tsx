@@ -19,6 +19,7 @@ import { Button } from "@/components/ui";
 
 interface Props {
   className?: string;
+  isShowMobileMenu?: boolean;
   isShowProfile?: boolean;
   isShowSearch?: boolean;
   isShowCart?: boolean;
@@ -26,6 +27,7 @@ interface Props {
 
 export const Header: React.FC<Props> = ({
   className,
+  isShowMobileMenu = false,
   isShowSearch = true,
   isShowCart = true,
   isShowProfile = true,
@@ -133,11 +135,13 @@ export const Header: React.FC<Props> = ({
       </Container>
 
       <AuthModal open={isOpenModal} onClose={() => setIsOpenModal(false)} />
-      <MobileMenu
-        isOpen={isMobileMenuOpen}
-        onOpenAuthModal={() => setIsOpenModal(true)}
-        onClose={handleCloseMobileMenu}
-      />
+      {isShowMobileMenu && (
+        <MobileMenu
+          isOpen={isMobileMenuOpen}
+          onOpenAuthModal={() => setIsOpenModal(true)}
+          onClose={handleCloseMobileMenu}
+        />
+      )}
     </header>
   );
 };

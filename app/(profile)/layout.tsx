@@ -16,6 +16,7 @@ export default function ProfileLayout({
       <Suspense>
         {" "}
         <Header
+          isShowMobileMenu={false}
           isShowProfile={false}
           isShowSearch={false}
           isShowCart={false}
