@@ -119,15 +119,17 @@ export const Header: React.FC<Props> = ({
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-3 md:hidden">
             {isShowCart && <CartButton />}
-            <Button
-              onClick={toggleMobileMenu}
-              className="p-2 text-primary bg-primary/10"
-              size={"icon"}
-              variant={"secondary"}
-              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-            >
-              {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
-            </Button>
+            {isShowMobileMenu && (
+              <Button
+                onClick={toggleMobileMenu}
+                className="p-2 text-primary bg-primary/10"
+                size={"icon"}
+                variant={"secondary"}
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              >
+                {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+              </Button>
+            )}
           </div>
         </div>
 
@@ -135,13 +137,12 @@ export const Header: React.FC<Props> = ({
       </Container>
 
       <AuthModal open={isOpenModal} onClose={() => setIsOpenModal(false)} />
-      {isShowMobileMenu && (
-        <MobileMenu
-          isOpen={isMobileMenuOpen}
-          onOpenAuthModal={() => setIsOpenModal(true)}
-          onClose={handleCloseMobileMenu}
-        />
-      )}
+
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onOpenAuthModal={() => setIsOpenModal(true)}
+        onClose={handleCloseMobileMenu}
+      />
     </header>
   );
 };
