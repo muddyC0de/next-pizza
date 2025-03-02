@@ -27,7 +27,7 @@ interface Props {
 
 export const Header: React.FC<Props> = ({
   className,
-  isShowMobileMenu = false,
+  isShowMobileMenu = true,
   isShowSearch = true,
   isShowCart = true,
   isShowProfile = true,
