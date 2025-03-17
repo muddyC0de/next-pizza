@@ -43,8 +43,6 @@ export default function CheckoutPage() {
 
       const url = await createOrder(data);
 
-      toast.success("Замовлення успішно оформлено 🎉! 📝 Перехід до оплати...");
-
       if (url) {
         location.href = url;
       }
