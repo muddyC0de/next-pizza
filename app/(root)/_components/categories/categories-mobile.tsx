@@ -31,15 +31,18 @@ export const CategoriesMobile: React.FC<Props> = ({
     >
       {categories.map((cat) => (
         <Link
-          className={cn(
-            "flex bg-slate-100/60  text-gray-500 items-center font-bold text-sm h-11 rounded-2xl px-5",
-            activeId === cat.id && " text-primary bg-primary/10"
-          )}
+          key={cat.id}
           href={`/#${cat.name}`}
           onClick={() => handleClick(cat.id)}
-          key={cat.id}
+          className={cn(
+            // Default appearance: higher contrast on white background
+            "flex items-center font-semibold text-sm h-11 px-5 rounded-2xl border border-gray-200 bg-white text-gray-700 hover:bg-gray-100",
+            // Active appearance: stronger primary contrast
+            activeId === cat.id &&
+              "bg-primary-100 text-primary-700 hover:bg-primary/20 border-primary"
+          )}
         >
-          <button>{cat.name}</button>
+          {cat.name}
         </Link>
       ))}
     </div>

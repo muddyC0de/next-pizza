@@ -90,7 +90,7 @@ html {
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border selection:bg-primary/25 selection:text-primary;
   }
   body {
     @apply bg-background text-foreground;

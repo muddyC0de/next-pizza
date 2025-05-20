@@ -1,7 +1,7 @@
-import React from "react";
-import { CountIconButton } from "./count-icon-button";
 import { cn } from "@/lib/utils";
 import { LoaderCircle } from "lucide-react";
+import React from "react";
+import { CountIconButton } from "./count-icon-button";
 
 export interface CountButtonProps {
   value?: number;
@@ -34,7 +34,7 @@ export const CountButton: React.FC<CountButtonProps> = ({
 
       {loading ? (
         <div className="w-[16.81px] flex justify-center items-center h-[20px]">
-          <LoaderCircle size={16} className="animate-spin" />
+          <LoaderCircle size={16} className="animate-spin text-gray-500" />
         </div>
       ) : (
         <div className="w-[16.81px] flex justify-center items-center h-[20px]">
