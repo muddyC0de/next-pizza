@@ -14,38 +14,37 @@ const DEFAULT_MIN_PRICE = 0;
 const DEFAULT_MAX_PRICE = 1000;
 
 export const findPizzas = async (params: Promise<GetSearchParams>) => {
-  const sizes = await (await params).sizes
-    ?.split(",")
-    .map((item) => Number(item));
-  const pizzaTypes = (await params).pizzaTypes
-    ?.split(",")
-    .map((item) => Number(item));
-  const ingredientsIdArr = (await params).ingredients
-    ?.split(",")
-    .map((item) => Number(item));
-  const priceFrom = Number((await params).priceFrom) || DEFAULT_MIN_PRICE;
-  const priceTo = Number((await params).priceTo) || DEFAULT_MAX_PRICE;
-  const sortBy = (await params).sortBy || "asc";
+  const {
+    sizes,
+    pizzaTypes,
+    ingredients: ingredientsStr,
+    priceFrom: priceFromStr,
+    priceTo: priceToStr,
+    sortBy: sortByRaw,
+  } = await params;
+
+  const sizesArr = sizes?.split(",").map(Number);
+  const pizzaTypesArr = pizzaTypes?.split(",").map(Number);
+  const ingredientsArr = ingredientsStr?.split(",").map(Number);
+  const priceFrom = Number(priceFromStr) || DEFAULT_MIN_PRICE;
+  const priceTo = Number(priceToStr) || DEFAULT_MAX_PRICE;
+  const sortDirection = sortByRaw === "desc" ? "desc" : "asc";
+
   const categories = await prisma.category.findMany({
     include: {
       products: {
-        orderBy: {
-          id: "desc",
-        },
-
         where: {
-          ingredients: ingredientsIdArr
-            ? { some: { id: { in: ingredientsIdArr } } }
+          ingredients: ingredientsArr
+            ? { some: { id: { in: ingredientsArr } } }
             : undefined,
           items: {
             some: {
-              size: { in: sizes },
-              pizzaType: { in: pizzaTypes },
+              size: { in: sizesArr },
+              pizzaType: { in: pizzaTypesArr },
               price: { gte: priceFrom, lte: priceTo },
             },
           },
         },
-
         include: {
           ingredients: true,
           items: {
@@ -53,13 +52,21 @@ export const findPizzas = async (params: Promise<GetSearchParams>) => {
               price: { gte: priceFrom, lte: priceTo },
             },
             orderBy: {
-              price: sortBy === "asc" ? "asc" : "desc",
+              price: sortDirection,
             },
           },
         },
       },
     },
   });
+
+  for (const category of categories) {
+    category.products.sort((a, b) => {
+      const aMin = Math.min(...a.items.map((i) => i.price));
+      const bMin = Math.min(...b.items.map((i) => i.price));
+      return sortDirection === "asc" ? aMin - bMin : bMin - aMin;
+    });
+  }
 
   return categories;
 };
